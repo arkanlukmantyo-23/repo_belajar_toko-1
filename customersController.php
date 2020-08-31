@@ -21,8 +21,9 @@ class customersController extends Controller
         }
 
         $simpan = customers::create([
-            'nama_customers' => $request->nama_customers
-        ]);
+            'nama_customers' => $request->('nama_customers')->get();
+        return Response()->json($simpan);        
+]);
 
         if($simpan)
         {
