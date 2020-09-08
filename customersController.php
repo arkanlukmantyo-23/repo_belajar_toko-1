@@ -20,10 +20,24 @@ class customersController extends Controller
             return Response()->json($validator->errors());
         }
 
+        $ubah = customer::where('id',$id)->update([
+           'nama_customer' => $request->nama_customer
+]); 
         $simpan = customers::create([
             'nama_customers' => $request->('nama_customers')->get();
         return Response()->json($simpan);        
 ]);
+
+        if($ubah)
+        {
+            return Response()->json(['status' => 1]);
+        }
+        else
+        {
+            return Response()->json(['status' => 0]);
+        }
+
+    }
 
         if($simpan)
         {
